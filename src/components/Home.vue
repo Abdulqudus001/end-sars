@@ -1,37 +1,41 @@
 <template>
-  <v-container>
-    <v-snackbar
-      v-model="snackbar"
-    >
-      {{ text }}
+  <div>
+    <Hero @schedule="showDialog = true" />
+    <v-container>
+      <v-snackbar
+        v-model="snackbar"
+      >
+        {{ text }}
 
-      <template v-slot:action="{ attrs }">
-        <v-btn
-          color="primary"
-          text
-          v-bind="attrs"
-          @click="snackbar = false"
-        >
-          Close
-        </v-btn>
-      </template>
-    </v-snackbar>
-    <new-protest
-      v-if="showDialog"
-      @hideDialog="showDialog = false"
-      @save="schedule"
-      :show-dialog="showDialog"
-      :loading="loading"
-    />
-    <v-btn @click="showDialog = true">Schedule Protest</v-btn>
-  </v-container>
+        <template v-slot:action="{ attrs }">
+          <v-btn
+            color="primary"
+            text
+            v-bind="attrs"
+            @click="snackbar = false"
+          >
+            Close
+          </v-btn>
+        </template>
+      </v-snackbar>
+      <new-protest
+        v-if="showDialog"
+        @hideDialog="showDialog = false"
+        @save="schedule"
+        :show-dialog="showDialog"
+        :loading="loading"
+      />
+      <v-btn @click="showDialog = true">Schedule Protest</v-btn>
+    </v-container>
+  </div>
 </template>
 
 <script>
 import NewProtest from './NewProtest.vue';
+import Hero from './Hero.vue';
 
 export default {
-  components: { NewProtest },
+  components: { NewProtest, Hero },
   data: () => ({
     loading: false,
     snackbar: false,
