@@ -39,7 +39,7 @@
       </v-row>
     </header>
 
-    <v-row justify="center" align="center" class="mx-0 hero__text fill-height">
+    <v-row justify="center" align="center" class="mx-0 hero__text">
       <v-container>
         <h1 class="my-2 font-weight-black">Find Protest Locations Near You</h1>
         <h2 class="my-2">Let Our Voices Be Heard</h2>
@@ -57,7 +57,7 @@
       </span>
       <v-btn
         target="_blank"
-        href="twitter.com/slkhadeeja"
+        href="https://twitter.com/slkhadeeja"
         text
         color="white"
         class="text-capitalize mx-2"
@@ -123,9 +123,9 @@ header {
 
   &__text {
     position: relative;
-    margin-top: -60px;
     text-align: center;
     color: #FFF;
+    height: calc(100vh - 60px);
 
     h1 {
       font-size: 3.5rem;
