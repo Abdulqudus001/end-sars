@@ -1,7 +1,7 @@
 <template>
-  <v-container>
+  <div id="locations">
     Hello All Locations
-  </v-container>
+  </div>
 </template>
 
 <script>

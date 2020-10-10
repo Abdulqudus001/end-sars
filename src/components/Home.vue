@@ -25,7 +25,7 @@
         :show-dialog="showDialog"
         :loading="loading"
       />
-      <v-btn @click="showDialog = true">Schedule Protest</v-btn>
+      <Locations />
     </v-container>
   </div>
 </template>
@@ -33,9 +33,10 @@
 <script>
 import NewProtest from './NewProtest.vue';
 import Hero from './Hero.vue';
+import Locations from './Locations.vue';
 
 export default {
-  components: { NewProtest, Hero },
+  components: { NewProtest, Hero, Locations },
   data: () => ({
     loading: false,
     snackbar: false,

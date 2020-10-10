@@ -29,7 +29,7 @@
         <h2 class="my-2">Let Our Voices Be Heard</h2>
         <h2 class="red--text">#EndSARSNOW!!!</h2>
         <v-row class="mx-0 my-3" justify="center" align="center">
-          <v-btn class="ma-2" color="white" to="#locations">Find Locations</v-btn>
+          <v-btn class="ma-2" color="white" @click="scrollToSection">Find Locations</v-btn>
           <v-btn class="ma-2" color="white" @click="$emit('schedule')">Schedule Protest</v-btn>
         </v-row>
       </v-container>
@@ -39,8 +39,12 @@
 
 <script>
 export default {
-
-}
+  methods: {
+    scrollToSection() {
+      this.$vuetify.goTo('#locations');
+    }
+  },
+};
 </script>
 
 <style lang="scss" scoped>
