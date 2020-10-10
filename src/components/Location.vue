@@ -8,16 +8,27 @@
         show-arrows-on-hover
         height="100%"
       >
-        <v-carousel-item
-          v-for="photos in location.location.photos"
-          :key="photos.url"
-        >
-          <v-img
-            lazy-src="https://picsum.photos/id/11/10/6"
-            :src="photos.url"
-            height="100%"
-          />
-        </v-carousel-item>
+        <template v-if="location.location.photos">
+          <v-carousel-item
+            v-for="photos in location.location.photos"
+            :key="photos.url"
+          >
+            <v-img
+              lazy-src="https://picsum.photos/id/11/10/6"
+              :src="photos.url"
+              height="100%"
+            />
+          </v-carousel-item>
+        </template>
+        <template v-else>
+          <v-carousel-item>
+            <v-img
+              lazy-src="https://picsum.photos/id/11/10/6"
+              src="@/assets/no-image.png"
+              height="100%"
+            />
+          </v-carousel-item>
+        </template>
       </v-carousel>
     </div>
     <div class="location__details pa-2 col-12 col-sm-8">
