@@ -77,6 +77,14 @@ export default {
       return filtered;
     },
   },
+  watch: {
+    userCoords(val) {
+      console.log(val);
+      if (val) {
+        this.locations = this.sortLocations(this.locations);
+      }
+    },
+  },
   mounted() {
     this.loadLocations();
   },

@@ -45,7 +45,7 @@
         <h2 class="my-2">Let Our Voices Be Heard</h2>
         <h2 class="red--text">#EndSARSNOW!!!</h2>
         <v-row class="mx-0 my-3" justify="center" align="center">
-          <v-btn class="ma-2" color="white" @click="getUserLocation">Find Locations</v-btn>
+          <v-btn class="ma-2" color="white" @click="scrollToSection">Find Locations</v-btn>
           <v-btn class="ma-2" color="white" @click="$emit('schedule')">Schedule Protest</v-btn>
         </v-row>
       </v-container>
@@ -59,6 +59,9 @@ export default {
     snackbar: false,
     text: '',
   }),
+  mounted() {
+    this.getUserLocation();
+  },
   methods: {
     getUserLocation() {
       if (navigator.geolocation) {
@@ -67,7 +70,6 @@ export default {
         this.snackbar = true;
         this.text = 'Geolocation is not supported by this browser.';
       }
-      this.scrollToSection();
     },
     showPosition(position) {
       const { coords } = position;
@@ -78,7 +80,10 @@ export default {
       localStorage.setItem('sars-coords', JSON.stringify(lsCoords));
     },
     scrollToSection() {
-      this.$vuetify.goTo('#locations');
+      this.$emit('showLocations');
+      setTimeout(() => {
+        this.$vuetify.goTo('#locations');
+      }, 100);
     }
   },
 };

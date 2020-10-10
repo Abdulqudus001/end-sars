@@ -25,7 +25,7 @@
       <div v-html="location.location.adr_address" class="location__address"></div>
       <div class="location__date mt-4">{{ date }}</div>
       <div class="location__time">{{ location.time }}</div>
-      <div v-if="userCoords" class="location__distance">{{ distance }} miles</div>
+      <div v-show="userCoords" class="location__distance">{{ distance }} miles</div>
       <v-btn
         :href="location.location.url"
         target="_blank"

@@ -15,5 +15,8 @@ export default {
   data: () => ({
     //
   }),
+  created() {
+    localStorage.removeItem('sars-coords')
+  }
 };
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Hero @schedule="showDialog = true" />
+    <Hero @schedule="showDialog = true" @showLocations="locations = true" />
     <v-container>
       <v-snackbar
         v-model="snackbar"
@@ -25,7 +25,7 @@
         :show-dialog="showDialog"
         :loading="loading"
       />
-      <Locations />
+      <Locations v-if="locations" />
     </v-container>
   </div>
 </template>
@@ -42,6 +42,7 @@ export default {
     snackbar: false,
     text: '',
     showDialog: false,
+    locations: false,
   }),
   methods: {
     schedule(protest) {
