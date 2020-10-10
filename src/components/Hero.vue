@@ -100,7 +100,9 @@ header {
 
 .hero {
   height: 100vh;
-  background: linear-gradient(transparentize($color: #000, $amount: 0.5), transparentize($color: #000, $amount: 0.5)), url('../assets/hero.jpg');
+  background: linear-gradient(transparentize($color: #000, $amount: 0.5), transparentize($color: #000, $amount: 0.5)), url('../assets/hero.webp');
+  background-repeat: no-repeat;
+  background-size: cover;
 
   &__text {
     position: relative;
