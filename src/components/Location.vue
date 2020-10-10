@@ -56,7 +56,8 @@ export default {
 <style lang="scss" scoped>
 .location {
   border-radius: 8px;
-  border: 1px solid;
+  // border: 1px solid transparentize($color: #000, $amount: 0.7);
+  box-shadow: 0 4px 7px rgba($color: #000, $alpha: 0.2);
   position: relative;
 
   &__images::v-deep {

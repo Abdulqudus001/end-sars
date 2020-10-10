@@ -13,8 +13,8 @@ export default {};
 .lds-ripple {
   display: inline-block;
   position: relative;
-  width: 80px;
-  height: 80px;
+  width: 150px;
+  height: 150px;
 }
 .lds-ripple div {
   position: absolute;
@@ -28,8 +28,8 @@ export default {};
 }
 @keyframes lds-ripple {
   0% {
-    top: 36px;
-    left: 36px;
+    top: 50px;
+    left: 50px;
     width: 0;
     height: 0;
     opacity: 1;
@@ -37,8 +37,8 @@ export default {};
   100% {
     top: 0px;
     left: 0px;
-    width: 72px;
-    height: 72px;
+    width: 100px;
+    height: 100px;
     opacity: 0;
   }
 }

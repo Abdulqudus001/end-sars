@@ -17,7 +17,9 @@
       </template>
     </v-snackbar>
     <template v-if="loading">
-      <Loader />
+      <div class="row justify-center">
+        <Loader />
+      </div>
     </template>
     <template v-else>
       <v-row>
