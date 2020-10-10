@@ -51,7 +51,10 @@
       </v-container>
     </v-row>
 
-    <div class="contributors white--text">
+    <div class="contributors white--text row mx-3 align-center">
+      <span>
+        Contributors:
+      </span>
       <v-btn
         target="_blank"
         href="twitter.com/slkhadeeja"
