@@ -1,6 +1,6 @@
 <template>
   <div class="location row mx-0">
-    <div class="location__images col-12 col-sm-4 pa-0">
+    <div class="location__images col-12 col-md-4 pa-0">
       <v-carousel
         cycle
         hide-delimiter-background
@@ -16,7 +16,10 @@
             <v-img
               lazy-src="https://picsum.photos/id/11/10/6"
               :src="photos.url"
+              aspect-ratio="1"
+              min-width="250px"
               height="100%"
+              width="100%"
             />
           </v-carousel-item>
         </template>
@@ -31,7 +34,7 @@
         </template>
       </v-carousel>
     </div>
-    <div class="location__details pa-2 col-12 col-sm-8">
+    <div class="location__details pa-2 col-12 col-md-8">
       <h3 class="location__name">{{ location.location.name }}</h3>
       <div v-html="location.location.adr_address" class="location__address"></div>
       <div class="location__date mt-4">{{ date }}</div>
@@ -148,7 +151,7 @@ export default {
     font-weight: 500;
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 960px) {
     flex-direction: column;
 
     &__images {
@@ -164,6 +167,7 @@ export default {
 
     &__details {
       position: unset;
+      width: 100%;
     }
 
     &__distance {

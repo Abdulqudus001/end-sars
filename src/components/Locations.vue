@@ -30,7 +30,7 @@
         />
       </v-row>
       <v-row v-if="allLocations.length > 0">
-        <v-col sm="12">
+        <v-col cols="12">
           <h4 class="text-center red--text caption font-weight-medium">
             Disclaimer: Locations might not be pinpoint accurate so try to reach out the the contact person for more information
           </h4>
@@ -38,7 +38,8 @@
         <v-col
           v-for="location in allLocations"
           :key="location.location.place_id"
-          sm="6"
+          cols="12"
+          md="6"
         >
           <Location :location="location" />
         </v-col>
