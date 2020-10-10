@@ -25,6 +25,9 @@
       <div v-html="location.location.adr_address" class="location__address"></div>
       <div class="location__date mt-4">{{ date }}</div>
       <div class="location__time">{{ location.time }}</div>
+      <div class="location__contact">
+        Contact Person: {{ location.contact }}
+      </div>
       <div v-show="userCoords" class="location__distance">{{ distance }} miles</div>
       <v-btn
         :href="location.location.url"
@@ -128,7 +131,8 @@ export default {
   }
 
   &__date,
-  &__time {
+  &__time,
+  &__contact {
     font-size: 14px;
     font-weight: 500;
   }
