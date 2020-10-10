@@ -25,7 +25,7 @@
       <div v-html="location.location.adr_address" class="location__address"></div>
       <div class="location__date mt-4">{{ date }}</div>
       <div class="location__time">{{ location.time }}</div>
-      <div class="location__distance">1200 miles</div>
+      <div class="location__distance">{{ distance }} miles</div>
       <v-btn
         :href="location.location.url"
         target="_blank"
@@ -46,9 +46,43 @@ export default {
   computed: {
     date() {
       const protestDate = new Date(this.location.date).toDateString();
-      console.log(protestDate);
       return protestDate;
     },
+    distance() {
+      const userLocation = JSON.parse(localStorage.getItem('sars-coords'));
+      const protestLocation = this.location.location.geometry;
+      const distanceDifference = this.calculateDistance(
+        userLocation.lat,
+        userLocation.lng,
+        protestLocation.lat,
+        protestLocation.lng
+      );
+      return distanceDifference.toFixed(2);
+    }
+  },
+  methods: {
+    // Proudly sponsored by SO
+    calculateDistance(lat1, lon1, lat2, lon2, unit) {
+      if ((lat1 == lat2) && (lon1 == lon2)) {
+        return 0;
+      }
+      else {
+        var radlat1 = Math.PI * lat1/180;
+        var radlat2 = Math.PI * lat2/180;
+        var theta = lon1-lon2;
+        var radtheta = Math.PI * theta/180;
+        var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+        if (dist > 1) {
+          dist = 1;
+        }
+        dist = Math.acos(dist);
+        dist = dist * 180/Math.PI;
+        dist = dist * 60 * 1.1515;
+        if (unit=="K") { dist = dist * 1.609344 }
+        if (unit=="N") { dist = dist * 0.8684 }
+        return dist;
+      }
+    }
   },
 };
 </script>
