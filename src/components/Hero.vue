@@ -1,5 +1,21 @@
 <template>
   <section class="hero">
+    <v-snackbar
+      v-model="snackbar"
+    >
+      {{ text }}
+
+      <template v-slot:action="{ attrs }">
+        <v-btn
+          color="primary"
+          text
+          v-bind="attrs"
+          @click="snackbar = false"
+        >
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
     <header class="py-3">
       <v-row class="mx-0" align="center">
         <div class="d-flex align-center">
@@ -29,7 +45,7 @@
         <h2 class="my-2">Let Our Voices Be Heard</h2>
         <h2 class="red--text">#EndSARSNOW!!!</h2>
         <v-row class="mx-0 my-3" justify="center" align="center">
-          <v-btn class="ma-2" color="white" @click="scrollToSection">Find Locations</v-btn>
+          <v-btn class="ma-2" color="white" @click="getUserLocation">Find Locations</v-btn>
           <v-btn class="ma-2" color="white" @click="$emit('schedule')">Schedule Protest</v-btn>
         </v-row>
       </v-container>
@@ -39,7 +55,28 @@
 
 <script>
 export default {
+  data: () => ({
+    snackbar: false,
+    text: '',
+  }),
   methods: {
+    getUserLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(this.showPosition);
+      } else {
+        this.snackbar = true;
+        this.text = 'Geolocation is not supported by this browser.';
+      }
+    },
+    showPosition(position) {
+      const { coords } = position;
+      const lsCoords = {
+        lat: coords.latitude,
+        lng: coords.longitude
+      };
+      localStorage.setItem('sars-coords', JSON.stringify(lsCoords));
+      this.scrollToSection();
+    },
     scrollToSection() {
       this.$vuetify.goTo('#locations');
     }
