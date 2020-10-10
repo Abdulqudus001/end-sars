@@ -46,9 +46,14 @@ export default {
   }),
   methods: {
     authenticate() {
-      const password = prompt('Enter password');
-      if (password === '#n0t0SARS') {
+      if (sessionStorage.getItem('sars-password')) {
         this.showDialog = true;
+      } else {
+        const password = prompt('Enter password');
+        if (password === '#n0t0SARS') {
+          sessionStorage.setItem('sars-password', password);
+          this.showDialog = true;
+        }
       }
     },
     schedule(protest) {
@@ -75,6 +80,7 @@ export default {
       const data = {
         date: protest.date,
         time: protest.time,
+        contact: protest.contact,
         location: location,
       };
       console.log(data);

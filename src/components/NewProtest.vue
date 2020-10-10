@@ -30,7 +30,7 @@
             </template>
             <v-date-picker v-model="protest.date" scrollable>
               <v-spacer></v-spacer>
-              <v-btn text color="primary" @click="modal = false">
+              <v-btn text color="primary" @click="showDateDialog = false">
                 Cancel
               </v-btn>
               <v-btn
@@ -77,13 +77,19 @@
               </v-btn>
             </v-time-picker>
           </v-dialog>
-          <v-row class="mx-0 my-3">
+          <v-row class="mx-0 mt-2">
             <v-icon>mdi-map</v-icon>
             <gmap-autocomplete
               @place_changed="setPlace"
               class="autocomplete"
             />
           </v-row>
+          <v-text-field
+            v-model="protest.contact"
+            placeholder="Contact Person"
+            prepend-icon="mdi-account"
+            class="my-6"
+          />
           <v-btn
             color="primary"
             class="mt-6"
@@ -109,6 +115,7 @@ export default {
       date: '',
       time: '',
       location: '',
+      contact: ''
     },
   }),
   methods: {
