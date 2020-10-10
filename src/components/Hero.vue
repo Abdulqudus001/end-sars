@@ -67,6 +67,7 @@ export default {
         this.snackbar = true;
         this.text = 'Geolocation is not supported by this browser.';
       }
+      this.scrollToSection();
     },
     showPosition(position) {
       const { coords } = position;
@@ -75,7 +76,6 @@ export default {
         lng: coords.longitude
       };
       localStorage.setItem('sars-coords', JSON.stringify(lsCoords));
-      this.scrollToSection();
     },
     scrollToSection() {
       this.$vuetify.goTo('#locations');

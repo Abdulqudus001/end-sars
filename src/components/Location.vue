@@ -25,7 +25,7 @@
       <div v-html="location.location.adr_address" class="location__address"></div>
       <div class="location__date mt-4">{{ date }}</div>
       <div class="location__time">{{ location.time }}</div>
-      <div class="location__distance">{{ distance }} miles</div>
+      <div v-if="userCoords" class="location__distance">{{ distance }} miles</div>
       <v-btn
         :href="location.location.url"
         target="_blank"
@@ -48,12 +48,17 @@ export default {
       const protestDate = new Date(this.location.date).toDateString();
       return protestDate;
     },
+    userCoords()  {
+      return JSON.parse(localStorage.getItem('sars-coords'));
+    },
     distance() {
-      const userLocation = JSON.parse(localStorage.getItem('sars-coords'));
+      if (!this.userCoords) {
+        return null;
+      }
       const protestLocation = this.location.location.geometry;
       const distanceDifference = this.calculateDistance(
-        userLocation.lat,
-        userLocation.lng,
+        this.userCoords.lat,
+        this.userCoords.lng,
         protestLocation.lat,
         protestLocation.lng
       );
