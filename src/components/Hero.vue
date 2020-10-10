@@ -50,6 +50,19 @@
         </v-row>
       </v-container>
     </v-row>
+
+    <div class="contributors white--text">
+      <v-btn
+        target="_blank"
+        href="twitter.com/slkhadeeja"
+        text
+        color="white"
+        class="text-capitalize mx-2"
+      >
+        SLKhadeeja
+        <v-icon>mdi-twitter</v-icon>
+      </v-btn>
+    </div>
   </section>
 </template>
 
@@ -103,6 +116,7 @@ header {
   background: linear-gradient(transparentize($color: #000, $amount: 0.5), transparentize($color: #000, $amount: 0.5)), url('../assets/hero.webp');
   background-repeat: no-repeat;
   background-size: cover;
+  position: relative;
 
   &__text {
     position: relative;
@@ -126,5 +140,10 @@ header {
       }
     }
   }
+}
+
+.contributors {
+  position: absolute;
+  bottom: 10px;
 }
 </style>
