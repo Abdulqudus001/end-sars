@@ -64,13 +64,15 @@ export default {
         lng: location.geometry.location.lng()
       };
 
-      location.photos = location.photos.map((el) => {
-        return {
-          url: el.getUrl(),
-          height: el.height,
-          width: el.width
-        }
-      });
+      if (location.photos) {
+        location.photos = location.photos.map((el) => {
+          return {
+            url: el.getUrl(),
+            height: el.height,
+            width: el.width
+          }
+        });
+      }
 
       if (location.opening_hours) {
         delete location.opening_hours;
@@ -83,7 +85,6 @@ export default {
         contact: protest.contact,
         location: location,
       };
-      console.log(data);
       this.$firebase.collection('protests').add(data).then(() => {
         this.loading = false;
         this.showDialog = false;
