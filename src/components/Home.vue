@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Hero @schedule="authenticate" @showLocations="locations = true" />
+    <Hero @schedule="showDialog = true" @showLocations="locations = true" />
     <v-container>
       <v-snackbar
         v-model="snackbar"
@@ -45,17 +45,6 @@ export default {
     locations: false,
   }),
   methods: {
-    authenticate() {
-      if (sessionStorage.getItem('sars-password')) {
-        this.showDialog = true;
-      } else {
-        const password = prompt('Enter password');
-        if (password === '#n0t0SARS') {
-          sessionStorage.setItem('sars-password', password);
-          this.showDialog = true;
-        }
-      }
-    },
     schedule(protest) {
       this.loading = true;
       let location = {...protest.location};
